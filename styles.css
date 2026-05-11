@@ -1,0 +1,314 @@
+:root {
+    --bg-color: #0f172a;
+    --bg-color2: rgba(15, 23, 42, 0.85);
+    --card-bg: #1e293b;
+    --accent: #22d3ee;
+    --text-main: #f8fafc;
+    --text-dim: #94a3b8;
+    --success: #10b981;
+    --border: #334155;
+    --color-individual: #00d2ff;
+    --color-duo: #9139f5;
+    --color-trio: #ff007a;
+    --color-combo: #ffd700;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.header-content {
+    text-align: center;
+    margin-bottom: 4rem;
+    font-size: 1.6rem;
+}
+
+/*Contenedor que centra el login en pantalla y tiene la imagen de fondo*/
+
+#auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /*Ocupa todo el alto de la ventana*/;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
+    background-image: url(img/background_form_stranger_things.jpg);
+    background-size: cover; /*La imagen cubre todo el contenedor sin deformarse*/
+    background-position: center; /*La imagen se centra en el contenedor*/
+    background-repeat: no-repeat; /*La imagen no se repite*/
+
+    background-color: rgba(0, 0, 0, 0.4);
+    background-blend-mode: multiply; /*Mezcla el color de fondo con la imagen para oscurecerla y mejorar la legibilidad del formulario*/;
+    border-radius: 1rem;
+    overflow: hidden;
+    margin: 2rem;
+}
+
+.login-box {
+    background: rgba(255, 255, 255, 0.09);/*Fondo semitransparente para que se vea la imagen de fondo pero el formulario sea legible*/
+    padding: 4rem 3rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /*Sombra para darle profundidad al formulario*/
+    width: 100%;
+    max-width: 40rem; /*Limita el ancho del formulario para que no sea demasiado grande en pantallas grandes*/
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.login-box input {
+    width: 100%;
+    padding: 1.2rem;
+    margin-bottom: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 0.8rem;
+    box-sizing: border-box; /*Se evita que el input se expanda más allá de su contenedor al agregar padding*/
+}
+
+#btn-login {
+    width: 100%;
+    padding: 1.4rem;
+    margin-top: 10px;
+    background-color: var(--accent);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#btn-login:hover {
+    background-color: #0bc9d9;
+}
+
+h1 {
+    margin-bottom: 0.5rem;
+    color: var(--accent);
+}
+
+h1 span {
+    font-size: 0.8em;
+}
+
+/* Estilo general para todos los botones */
+
+.menu-categorias {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 3rem 0;
+    /*margin-top: 2rem;
+    margin-bottom: 3rem;*/
+    padding: 0 10px;
+}
+
+.menu-categorias button {
+    min-width: 12rem;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.4);
+    color: var(--text-main);
+    padding: 1rem 1.8rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1.3rem;
+    transition: 0.3s all ease;
+    border: 2px solid transparent;
+}
+
+/* Colores específicos en efecto Glow */
+.btn-individual {
+    border-color: var(--color-individual) !important;
+}
+
+.btn-individual:hover {
+    box-shadow: 0 0 10px var(--color-individual);
+    background: var(--color-individual);
+}
+
+.btn-duo {
+    border-color: var(--color-duo) !important;
+}
+
+.btn-duo:hover {
+    box-shadow: 0 0 10px var(--color-duo);
+    background: var(--color-duo);
+}
+
+.btn-trio {
+    border-color: var(--color-trio) !important;
+}
+
+.btn-trio:hover {
+    box-shadow: 0 0 10px var(--color-trio);
+    background: var(--color-trio);
+}
+
+.btn-combo {
+    border-color: var(--color-combo) !important;
+}
+
+.btn-combo:hover {
+    box-shadow: 0 0 10px var(--color-combo);
+    background: var(--color-combo);
+    color: var(--bg-color);
+}
+
+.search-container {
+    max-width: 80rem;
+    margin: 1rem auto 3rem auto;
+    /*margin-top: 1rem;*/
+    /*margin-bottom: 2.5rem;*/
+    padding: 0 10px;
+}
+
+#buscador {
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 1.2rem;
+    border: 1px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text-main);
+    font-size: 1.3rem;
+    box-sizing: border-box;
+}
+
+.grid-servicios {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 110rem;
+    margin: 0 auto;
+}
+
+.card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 1.6rem;
+    padding: 2rem;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.card-img-container {
+    width: 100%;
+    height: 14rem;
+    overflow: hidden;
+    background-color: var(--bg-color);
+}
+
+.card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img {
+    transform: scale(1.05);
+}
+
+.card-header, 
+.card h3, 
+.costo-box, 
+.ganancia {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-top: 1rem;
+}
+
+.badge {
+    background: #083344;
+    color: var(--bg-color);
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem 0;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.costo-box {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 1.5rem 0;
+    font-size: 1.2rem;
+}
+
+.ganancia {
+    color: var(--success);
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-align: right;
+}
+
+.btn-whatsapp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    width: 100%;
+    margin-top: 1.2rem;
+    padding: 1rem 0;
+    border: none;
+    border-radius: 0.8rem;
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    color: white;
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: filter 0.2s, transform 0.15s;
+}
+
+.btn-whatsapp:hover {
+    filter: brightness(1.1);
+    transform: scale(1.02);
+}
+
+.btn-whatsapp:active {
+    transform: scale(0.97);
+}
+
+.loading {
+    text-align: center;
+    grid-column: 1 / -1;
+    color: var(--text-dim);
+}
+
+@media (max-width: 480px) {
+    #auth-container {
+        padding: 1.5rem;
+    }
+
+    .login-box {
+        padding: 25px 20px;
+    }
+}

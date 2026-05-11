@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Streaming Pro - Panel de Vendedores</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Streamflick Pro <span>📺</span></h1>
+            <p>Lista oficial de servicios y precios</p>
+        </div>
+    </header>
+
+    <div id="auth-container">
+        <div class="login-box">
+            <h2>🔑 Acceso Privado</h2>
+            <div class="input-group">
+                <input type="email" id="login-email" placeholder="Correo electrónico">
+                <input type="password" id="login-password" placeholder="Contraseña">
+            </div>
+            <button id="btn-login" onclick="login()">Entrar al Panel</button>
+        </div>
+    </div>
+
+    <main id="main-content" style="display: none;">
+        <div class="menu-categorias">
+            <button class="btn-individual" onclick="filtrarPorCategoria('Individual')">Servicios</button>
+            <button class="btn-duo" onclick="filtrarPorCategoria('Dúos')">Dúos</button>
+            <button class="btn-trio" onclick="filtrarPorCategoria('Tríos')">Tríos</button>
+            <button class="btn-combo" onclick="filtrarPorCategoria('Combos Especiales')">Combos Premium</button>
+        </div>
+        <section class="search-container">
+            <input type="text" id="buscador" placeholder="Qué plataforma buscas? Ej: Disney...">
+        </section>
+
+        <div id="servicios-container" class="grid-servicios">
+            <p class="loading">Cargando servicios...</p>
+        </div>
+    </main>
+    
+    <script src="app.js" charset="UTF-8"></script>
+</body>
+</html>
