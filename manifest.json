@@ -1,0 +1,21 @@
+{
+    "name": "Streamflick PRO Panel",
+    "short_name": "Streamflick",
+    "description": "Panel privado de ventas y gestión para vendedores oficiales.",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#1a1a1a",
+    "theme_color": "#f6d365",
+    "icons": [
+        {
+            "src": "Streamflick_black.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "Streamflick_black.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}   
