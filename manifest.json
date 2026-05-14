@@ -8,12 +8,12 @@
     "theme_color": "#f6d365",
     "icons": [
         {
-            "src": "Streamflick_black.png",
+            "src": "img/logo/Streamflick_black.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "Streamflick_black.png",
+            "src": "img/logo/Streamflick_black.png",
             "sizes": "512x512",
             "type": "image/png"
         }
