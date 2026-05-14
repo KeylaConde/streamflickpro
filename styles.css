@@ -373,28 +373,27 @@ h1 span {
     }
 
     .logo-icon {
-        height: 4rem;
+        height: 6rem;
     }
 
     .logo-text {
-        font-size: 2rem;
+        font-size: 3rem;
         gap: 6px;
     }
 
     .logo-pro {
-        font-size: 1.5rem;
+        font-size: 2rem;
         padding: 3px 8px;
     }
 
     .header-content p {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
         padding: 0 1.5rem;
         text-align: center;
     }
 
     #auth-container {
         padding: 1.5rem;
-        margin: auto;
     }
 
     .login-box {
