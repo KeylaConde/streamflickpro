@@ -48,11 +48,12 @@ function generarLinkWhatsapp(item) {
     const e5 = '\u{1F44D}'; // 👍
 
     const msg = 
-    ' *Pedido de Servicio Streaming*\n\n' +
+    ' *Nuevo Pedido - Streamflick PRO*\n\n' +
+    ' Hola. Solicito la siguiente activación:\n\n' +
     ' *Servicio:* ' + item['Servicio'] + '\n' +
-    ' *Tu Costo:* $' + costoVendedor + '\n\n' +
-    ' *Por favor, confirma adjuntando el comprobante de pago.*\n' +
-    ' *¡Gracias por tu pedido!*';
+    ' *Costo:* $' + costoVendedor + '\n\n' +
+    ' Por favor, confírmame si tienes disponibilidad para proceder a cancelar el valor.\n' +
+    ' Quedo pendiente.';
 
     return 'https://wa.me/' + whatsapp_number + '?text=' + encodeURIComponent(msg);
 }
