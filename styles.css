@@ -31,6 +31,47 @@ body {
     font-size: 1.6rem;
 }
 
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px; /*Espacio entre el logo y el texto*/
+    margin-bottom: 2.5rem;
+    margin-top: 2rem;
+}
+
+.logo-icon {
+    height: 8rem;
+    width: auto;
+    filter: drop-shadow(0px 0px 10px rgba(255, 215, 0, 0.4));
+}
+
+.logo-text {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 4rem;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: linear-gradient(to right, #f9d423, #ff4e50);
+    background: linear-gradient(to right, #f6d365 0%, #ffb347 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 4px 15px rgba(255, 179, 71, 0.3);
+}
+
+.logo-pro {
+    background: linear-gradient(to right, #f6d365, #ffb347);
+    color: #1a1a1a;
+    -webkit-background-clip: border-box;
+    -webkit-text-fill-color: #1a1a1a;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    box-shadow: 0px 4px 15px rgba(255, 179, 71, 0.4);
+}
 /*Contenedor que centra el login en pantalla y tiene la imagen de fondo*/
 
 #auth-container {
@@ -301,6 +342,28 @@ h1 span {
     text-align: center;
     grid-column: 1 / -1;
     color: var(--text-dim);
+}
+
+/* Estilos para el pie de página */
+.firma-dev {
+    text-align: center;
+    padding: 3rem 2rem;
+    margin-top: 5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    color: var(--text-dim);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 0.9rem;
+}
+
+.highlight-nombre {
+    color: #f6d365;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.firma-dev:hover .highlight-nombre {
+    text-shadow: 0px 0px 8px rgba(255, 179, 71, 0.6);
+    transition: 0.3s ease;
 }
 
 @media (max-width: 480px) {

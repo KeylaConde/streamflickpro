@@ -184,3 +184,6 @@ async function login() {
 
 // Iniciar carga
 //getServicios();
+
+// Actualizar el año en el footer automáticamente
+document.getElementById("year").textContent = new Date().getFullYear();
