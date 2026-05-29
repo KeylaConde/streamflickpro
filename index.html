@@ -18,23 +18,47 @@
     <meta name="apple-mobile-web-app-title" content="Streamflick">
     <link rel="apple-touch-icon" href="img/logo/Streamflick_black.png">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
     <header>
         <div class="header-content">
-            <!--h1>Streamflick Pro <span>📺</span></h1 -->
             <div class="logo-container">
                 <img src="img/logo/Streamflick (2)-compressed.png" alt="Logo Streamflick Pro" class="logo-icon">
             <div class="logo-text">Streamflick <span class="logo-pro"> PRO</span>
             </div>
             </div>
-            <p>Lista oficial de servicios y precios</p>
+            <p>Tus plataformas de streaming favoritas en un solo lugar ⚡</p>
+            <button class="btn-acceso-vendedores" onclick="mostrarLogin()">Acceso Distribuidores 🔒</button>
         </div>
     </header>
 
-    <div id="auth-container">
+    <section id="seccion-publica">
+
+        <div class="menu-categorias-publico" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap;">
+            <div class="botones-grupo">
+            <button class="btn-individual" onclick="filtrarVitrinaPublica('Individual')">Servicios</button>
+            <button class="btn-duo" onclick="filtrarVitrinaPublica('Dúos')">Dúos</button>
+            <button class="btn-trio" onclick="filtrarVitrinaPublica('Tríos')">Tríos</button>
+            <button class="btn-combo" onclick="filtrarVitrinaPublica('Combos Especiales')">Combos Premium</button>
+            </div>
+
+        <div class="buscador-publico-container">
+            <form class="search-box-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="buscador-publico" name="q" placeholder="¿Qué plataforma buscas? (Ej: Netflix, Amazon...)" oninput="buscarServiciosPublicos()" autocomplete="off" spellcheck="false">
+            </form>
+        </div>
+        </div>
+
+        <div id="grid-clientes" class="grid-servicios">
+            <!-- Contenido de los clientes -->
+        </div>
+    </section>
+
+    <div id="auth-container" style="display: none;">
         <div class="login-box">
             <h2>🔑 Acceso Privado</h2>
             <div class="input-group">

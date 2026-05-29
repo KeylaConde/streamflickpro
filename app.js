@@ -27,10 +27,12 @@ async function getServicios() {
         serviciosData = data; // Guardar los datos en la variable de estado
 
         filtrarPorCategoria('Individual');
+        //renderizarVitrinaPublica(data);
+        filtrarVitrinaPublica('Individual');
 
     //    renderCards(data); // LLama a la función que crea las tarjetas
     //    console.log("¡Datos enviados a renderizar!");
-    }
+        }
 
     } catch (error) {
         console.error('Error al conectar:', error.message);
@@ -181,10 +183,123 @@ async function login() {
         //Ahora sí, cargar los servicios
         getServicios();
     }
+} 
+
+// Función para cambiar de la vista al login de vendedores
+function mostrarLogin() {
+    const seccionPublica = document.getElementById('seccion-publica');
+    const authContainer = document.getElementById('auth-container');
+    const btnVendedores = document.querySelector('.btn-acceso-vendedores');
+
+    // Si los encuentra, aplica los cambios de estilos de forma segura
+    if (seccionPublica) {
+        seccionPublica.style.display = 'none';
+    }
+    if (authContainer) {
+        authContainer.style.display = 'flex';
+    }
+    if (btnVendedores) {
+        btnVendedores.style.display = 'none';
+    }
+}
+
+//Función para filtrar lo que ven los clientes finales
+
+function filtrarVitrinaPublica(categoriaABuscar) {
+    // serviciosData es la variable global con todos los datos
+    if (!serviciosData || serviciosData.length === 0) return;
+
+    // Filtramos comparando con el nombre exacto de la columna en Supabase
+    const filtrados = serviciosData.filter(servicio =>servicio['Categoría'] === categoriaABuscar);
+
+    renderizarVitrinaPublica(filtrados);
+}
+
+function buscarServiciosPublicos() {
+    const textoBuscado = document.getElementById('buscador-publico').value.toLowerCase();
+
+    const resultadosFiltrados = serviciosData.filter(servicio =>
+    servicio.Servicio.toLowerCase().includes(textoBuscado)
+    );
+    
+    renderizarVitrinaPublica(resultadosFiltrados);
+    }
+
+
+// Función para renderizar los servicios al cliente final
+function renderizarVitrinaPublica(servicios) {
+    const contenedorPublico = document.getElementById('grid-clientes');
+
+    if (!contenedorPublico) {
+        console.error("No se encontró el grid-clientes en el HTML");
+        return;
+    }
+
+    // Limpiamos el contenedor antes de agregar nada 
+    contenedorPublico.innerHTML = '';
+
+    // Si no hay servicios cargados
+    if (servicios.length === 0) {
+        contenedorPublico.innerHTML = '<p style="color: white; text-align: center;">Cargando catálogo premium...</p>';
+        return;
+    }
+
+    // Recorremos la base de datos y creamos una tarjeta pública por cada servicio
+    servicios.forEach(servicio => {
+        const nombre = servicio.Servicio || 'Servicio Premium';
+        const precio = servicio['Precio Cliente'] || '0';
+        const tipo = servicio['Categoría'] || servicio.Categoria || 'Pantalla Individual';
+        const urlImagen = servicio.Imagen_URL || 'https://via.placeholder.com/80?text=Logo'; 
+
+        let claseColor ='';
+        if (tipo === 'Individual') {
+            claseColor = 'btn-individual';
+        } else if (tipo === 'Dúos') {
+            claseColor = 'btn-duo';
+        } else if (tipo === 'Tríos') {
+            claseColor = 'btn-trio';
+        } else if (tipo === 'Combos Especiales') {
+            claseColor = 'btn-combo';
+        }
+
+        // Formatear el precio para que se vea como moneda (ej: 15.000)
+        const precioFormateado = new Intl.NumberFormat('es-CO').format(precio);
+
+        const tarjetaHTML = `<div class="card-publica">
+            <img src="${urlImagen}" alt="Logo de ${nombre}" class="logo-servicio-publico">
+            <h3>${nombre}</h3>
+            <p class="tipo-cuenta tag-categoria ${claseColor}">${tipo}</p>
+
+            ${servicio['Ahorro'] > 0 ? `<p class="badge-ahorro">Ahorras: $${new Intl.NumberFormat('es-CO').format(servicio['Ahorro'])} 🤑</p>` : ''}
+
+            <div class="precio-destacado">
+                <span class="moneda">$</span>${precioFormateado} <span class="mes">/ mes</span>
+                </div>
+
+                <button class="btn-comprar-whatsapp" onclick="comprarPorWhatsapp('${nombre}')">
+                    <i class="fab fa-whatsapp"></i> Pedir Ahora
+                </button>
+            </div>
+            `;
+
+            // Agregamos la tarjeta al HTML
+            contenedorPublico.innerHTML += tarjetaHTML;
+    });
+} 
+
+// Función para el botón de whatsapp público
+function comprarPorWhatsapp(nombreServicio) {
+    const numeroWhatsapp = "573158643093";
+
+    const mensajeCliente = `¡Hola! Me interesa adquirir el servicio de "${nombreServicio}". ¿Tienes disponibilidad inmediata?`;
+
+    const linkCliente = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensajeCliente)}`;
+
+    window.open(linkCliente, '_blank');
 }
 
 // Iniciar carga
-//getServicios();
+getServicios();
 
 // Actualizar el año en el footer automáticamente
 document.getElementById("year").textContent = new Date().getFullYear();

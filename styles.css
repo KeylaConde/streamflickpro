@@ -11,6 +11,7 @@
     --color-duo: #9139f5;
     --color-trio: #ff007a;
     --color-combo: #ffd700;
+    --color-dorado: #f6d365;
 }
 
 html {
@@ -72,6 +73,235 @@ body {
     letter-spacing: 1px;
     box-shadow: 0px 4px 15px rgba(255, 179, 71, 0.4);
 }
+
+/* Estilos de la sección pública */
+#seccion-publica {
+    background: transparent;
+    padding-bottom: 4rem;
+    width: 100%;
+}
+
+.menu-categorias-publico {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin: 4rem auto 3rem auto;
+    max-width: 120rem;
+    padding: 0 2rem;
+    box-sizing: border-box;
+}
+
+.botones-grupo {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Contenedor principal de la barra de búsqueda */
+.buscador-publico-container {
+    flex-grow: 1;
+    max-width: 50rem;
+    margin-left: auto;
+}
+
+.search-box-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* Ícono de la lupa */
+.search-box-wrapper i {
+    position: absolute;
+    left: 1.8rem;
+    color: #888;
+    font-size: 0.95rem;
+}
+
+#buscador-publico {
+    width: 100%;
+    padding: 12px 12px 12px 48px;
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 2.5rem;
+    color: var(--text-main);
+    font-size: 1.3rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#buscador-publico:focus {
+    border-color: var(--color-dorado);
+    box-shadow: 0px 0px 12px rgba(246, 211, 101, 0.25);
+    background: #222222;
+}
+
+#grid-clientes {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px,1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+.card-publica {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 1.6rem;
+    padding: 25px 20px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-publica:hover {
+    transform: translateY(-5px);
+    border-color: var(--color-dorado);
+    box-shadow: 0px 12px 25px rgba(246,211,101, 0.1);
+}
+
+.card-publica h3 {
+    color: var(--text-main);
+    font-size: 1.4rem;
+    margin: 0 0 5px 0;
+    letter-spacing: 0.5px;
+}
+
+.card-publica .tipo-cuenta {
+    color: #ffffff;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    /*margin-bottom: 1.5rem;*/
+    font-weight: 600;
+}
+
+.card-publica .tag-categoria {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 2rem;
+    border: none;
+    margin: 5px auto 12px auto;
+    pointer-events: none;
+}
+
+.card-publica .tag-categoria.btn-individual {
+    color: var(--color-individual);
+    background-color: var(--bg-color);
+}
+
+.card-publica .tag-categoria.btn-duo {
+    color: var(--color-duo);
+    background-color: var(--bg-color);
+}
+
+.card-publica .tag-categoria.btn-trio {
+    color: var(--color-trio);
+    background-color: var(--bg-color);
+}
+
+.card-publica .tag-categoria.btn-combo {
+    color: var(--color-combo);
+    background-color: var(--bg-color);
+}
+
+.badge-ahorro {
+    width: 50%;
+    margin: 1rem auto 1.5rem auto;
+    color: var(--success);
+    font-size: 1.2rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 2rem;
+    display: inline-block;
+}
+
+.precio-destacado {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--color-dorado);
+    margin: 5px 0 18px 0;
+}
+
+.precio-destacado .moneda {
+    font-size: 1rem;
+    vertical-align: super;
+}
+
+.precio-destacado .mes {
+    font-size: 1rem;
+    color: #888;
+    font-weight: normal;
+}
+
+.logo-servicio-publico {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    border-radius: 1rem;
+    display: block;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
+    filter: drop-shadow(0px 4px 10px rgba(0, 0, 0, 0.4));
+}
+
+/* Estilos para el botón de compras en la sección pública */
+.btn-comprar-whatsapp {
+    background: linear-gradient(90deg, #25d366 0%, #1ebd5d 100%);
+    color: white;
+    width: 100%;
+    padding: 1.2rem;
+    border: none;
+    border-radius: 0.8rem;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    transition: background-color 0.3s ease, transform 0.3s ease
+}
+
+.btn-comprar-whatsapp:hover {
+    box-shadow: 0px 5px 15px rgba(37, 211, 102, 0.4);
+    transform: scale(1.02);
+}
+
+.btn-comprar-whatsapp i {
+    font-size: 1.4rem;
+}
+
+/* El botón del header para los vendedores */
+.btn-acceso-vendedores {
+    background: transparent;
+    border: 1px solid var(--color-dorado);
+    color: var(--color-dorado);
+    padding: 8px 15px;
+    border-radius: 2rem;
+    cursor: pointer;
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+    transition: 0.3s;
+    font-weight: 600;
+}
+
+.btn-acceso-vendedores:hover {
+    background: var(--color-dorado);
+    color: #1a1a1a;
+}
+
 /*Contenedor que centra el login en pantalla y tiene la imagen de fondo*/
 
 #auth-container {
@@ -151,7 +381,7 @@ h1 span {
     padding: 0 10px;
 }
 
-.menu-categorias button {
+.menu-categorias button, .menu-categorias-publico button {
     min-width: 12rem;
     text-align: center;
     background: rgba(0, 0, 0, 0.4);
@@ -206,8 +436,6 @@ h1 span {
 .search-container {
     max-width: 80rem;
     margin: 1rem auto 3rem auto;
-    /*margin-top: 1rem;*/
-    /*margin-bottom: 2.5rem;*/
     padding: 0 10px;
 }
 
@@ -255,6 +483,7 @@ h1 span {
     height: 14rem;
     overflow: hidden;
     background-color: var(--bg-color);
+    border-radius: 1rem;
 }
 
 .card-img {
@@ -390,6 +619,60 @@ h1 span {
         font-size: 1.5rem;
         padding: 0 1.5rem;
         text-align: center;
+    }
+
+    .buscador-publico-container {
+        margin-top: 1rem;
+        padding: 0 15px;
+    }
+
+    #buscador-publico {
+        font-size: 1.1rem;
+        padding: 10px 10px 10px 42px;
+    }
+
+    .menu-categorias-publico {
+        gap: 8px;
+        margin-bottom: 25px;
+    }
+
+    .menu-categorias-publico button {
+        padding: 8px 12px;
+        font-size: 1.1rem;
+        flex: 1 1 auto;
+        text-align: center;
+    }
+
+    /* Grid de las tarjetas públicas */
+    #grid-clientes.grid-servicios {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 16px;
+        padding: 0 15px;
+    }
+
+    .card-publica {
+        padding: 14px;
+    }
+
+    .card-publica h3 {
+        font-size: 1.2rem;
+        padding-bottom: 4px;
+    }
+
+    .badge-ahorro {
+        padding: 0;
+    }
+
+    .precio-destacado {
+        font-size: 1.6rem;
+        margin: 4px 0 14px 0;
+        padding-bottom: 0.5rem;
+        padding-top: 0;
+    }
+
+    .btn-comprar-whatsapp {
+        padding: 1rem;
+        font-size: 1.2rem;
     }
 
     #auth-container {
