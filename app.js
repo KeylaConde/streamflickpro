@@ -304,7 +304,7 @@ async function mostrarVentaReciente() {
     .from('Ventas') 
     .select('nombre_perfil, servicio_nombre')
     .order('created_at', { ascending: false }) // La más nueva primero
-    .limit(7); 
+    .limit(16); 
 
     if (error) {
         console.error("Error al obtener venta:", error);
