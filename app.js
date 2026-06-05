@@ -298,6 +298,39 @@ function comprarPorWhatsapp(nombreServicio) {
     window.open(linkCliente, '_blank');
 }
 
+async function mostrarVentaReciente() {
+    // Consultamos la última venta de Supabase 
+    const { data, error } = await supabaseClient
+    .from('Ventas') 
+    .select('nombre_perfil, servicio_nombre')
+    .order('created_at', { ascending: false }) // La más nueva primero
+    .limit(7); 
+
+    if (error) {
+        console.error("Error al obtener venta:", error);
+        return;
+    }
+
+if (data && data.length > 0) {
+    const indiceAleatorio = Math.floor(Math.random() * data.length);
+    const venta = data[indiceAleatorio];
+    const caja = document.getElementById('notificacion-venta');
+    const texto = document.getElementById('texto-venta');
+
+    // Cambiamos el mensaje
+    texto.innerText = `¡${venta.nombre_perfil} acaba de comprar ${venta.servicio_nombre}!`;
+
+    // Mostramos la notificación
+    caja.style.display = 'block';
+
+    // La ocultamos después de 5 segundos
+    setTimeout(() => { caja.style.display = 'none'; }, 5000);
+    }
+}
+
+// LLamamos a la función cada 10 segundos para que sea dinámico
+setInterval(mostrarVentaReciente, 10000); 
+
 // Iniciar carga
 getServicios();
 

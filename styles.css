@@ -595,6 +595,19 @@ h1 span {
     transition: 0.3s ease;
 }
 
+.toast-venta {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    background: var(--text-main);
+    color: var(--bg-color);
+    padding: 15px;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    z-index: 1000;
+    transition: opacity 0.5s;
+}
+
 @media (max-width: 480px) {
     .logo-container {
         gap: 2px;
