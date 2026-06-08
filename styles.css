@@ -157,7 +157,7 @@ body {
     text-align: center;
     border: 1px solid rgba(255, 255, 255, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-
+    position: relative;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -213,6 +213,52 @@ body {
 .card-publica .tag-categoria.btn-combo {
     color: var(--color-combo);
     background-color: var(--bg-color);
+}
+
+/* Contenedor del badge para asegurar su posición */
+.contenedor-badge {
+    margin: 8px 0;
+    min-height: 2.4rem; /*Evita que la tarjeta cambie de tamaño si no hay badge */
+    display: flex;
+    justify-content: center;
+}
+
+/* Estilo base del badge */
+.badge-disponibilidad {
+    padding: 4px 12px;
+    border-radius:  5rem;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    margin-top: 5px;
+    border: 2px solid transparent;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10; /* Asegura que esté por encima de la imagen */
+}
+
+/* Colores según estado */
+.verde {
+    background-color: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+    border-color: #22c55e;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+}
+
+.amarillo {
+    background-color: rgba(234, 179, 8, 0.2);
+    color: #facc15;
+    border-color: #eab308;
+    box-shadow: 0 0 10px rgba(234, 179, 8, 0.3);
+}
+
+.rojo {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    border-color: #ef4444;
+    opacity: 0.9; /* Le da un toque visual de 'no disponible' */
 }
 
 .badge-ahorro {

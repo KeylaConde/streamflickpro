@@ -262,13 +262,29 @@ function renderizarVitrinaPublica(servicios) {
             claseColor = 'btn-combo';
         }
 
+        // Lógica para determinar el badge de disponibilidad
+        let badgeDisponibilidad = '';
+
+        // Solo si es categoría 'Individual' y existe la columna 'Disponibilidad_servicio'
+        if (tipo === 'Individual' && servicio.Disponibilidad_servicio) {
+            let claseEstado = '';
+            const estadoDisponibilidad = servicio.Disponibilidad_servicio.toLowerCase();
+
+            if (estadoDisponibilidad === 'disponible') claseEstado = 'verde';
+            else if (estadoDisponibilidad === 'encargar') claseEstado = 'amarillo';
+            else claseEstado = 'rojo';
+
+            badgeDisponibilidad = `<span class="badge-disponibilidad ${claseEstado}">${servicio.Disponibilidad_servicio.toUpperCase()}</span>`;
+        }
+
         // Formatear el precio para que se vea como moneda (ej: 15.000)
         const precioFormateado = new Intl.NumberFormat('es-CO').format(precio);
 
         const tarjetaHTML = `<div class="card-publica">
+            ${badgeDisponibilidad}
             <img src="${urlImagen}" alt="Logo de ${nombre}" class="logo-servicio-publico">
             <h3>${nombre}</h3>
-            <p class="tipo-cuenta tag-categoria ${claseColor}">${tipo}</p>
+            <p class="tipo-cuenta tag-categoria ${claseColor}">${tipo}</p> 
 
             ${servicio['Ahorro'] > 0 ? `<p class="badge-ahorro">Ahorras: $${new Intl.NumberFormat('es-CO').format(servicio['Ahorro'])} 🤑</p>` : ''}
 
@@ -276,7 +292,7 @@ function renderizarVitrinaPublica(servicios) {
                 <span class="moneda">$</span>${precioFormateado} <span class="mes">/ mes</span>
                 </div>
 
-                <button class="btn-comprar-whatsapp" onclick="comprarPorWhatsapp('${nombre}')">
+                <button class="btn-comprar-whatsapp" onclick="comprarPorWhatsapp('${nombre}', '${servicio.Disponibilidad_servicio}')">
                     <i class="fab fa-whatsapp"></i> Pedir Ahora
                 </button>
             </div>
@@ -288,10 +304,17 @@ function renderizarVitrinaPublica(servicios) {
 } 
 
 // Función para el botón de whatsapp público
-function comprarPorWhatsapp(nombreServicio) {
+function comprarPorWhatsapp(nombreServicio, estadoDisponibilidad) {
+    let mensajeCliente = "";
     const numeroWhatsapp = "573158643093";
 
-    const mensajeCliente = `¡Hola! Me interesa adquirir el servicio de "${nombreServicio}". ¿Tienes disponibilidad inmediata?`;
+    if (estadoDisponibilidad === 'Disponible') {
+        mensajeCliente = `Hola, me gustaría adquirir el servicio de "${nombreServicio}". ¿Cómo es el proceso para realizar la compra? ¡Gracias!`;
+    } else if (estadoDisponibilidad === 'Encargar') {
+        mensajeCliente = `Hola, vi que "${nombreServicio}" está por encargo. Me interesa, ¿Cuánto tardaría en estar disponible? ¡Gracias!`;
+    } else {
+        mensajeCliente = `Hola, me interesa "${nombreServicio}", pero veo que no está disponible ahora. ¿Podrías avisarme cuando vuelve a estar activo? ¡Gracias!`;
+    }
 
     const linkCliente = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensajeCliente)}`;
 
