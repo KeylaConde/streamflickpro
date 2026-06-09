@@ -248,17 +248,15 @@ body {
 }
 
 .amarillo {
-    background-color: rgba(234, 179, 8, 0.2);
     color: #facc15;
-    border-color: #eab308;
-    box-shadow: 0 0 10px rgba(234, 179, 8, 0.3);
+    border-color: #facc15;
+    box-shadow: 0 0 8px rgba(250, 204, 21, 0.3);
 }
 
 .rojo {
-    background-color: rgba(239, 68, 68, 0.2);
-    color: #f87171;
+    background-color: rgba(248, 113, 113, 0.3);
+    color: #ef4444;
     border-color: #ef4444;
-    opacity: 0.9; /* Le da un toque visual de 'no disponible' */
 }
 
 .badge-ahorro {
@@ -522,6 +520,7 @@ h1 span {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1.5rem;
+    position: relative;
 }
 
 .card-img-container {
@@ -530,6 +529,40 @@ h1 span {
     overflow: hidden;
     background-color: var(--bg-color);
     border-radius: 1rem;
+    position: relative;
+}
+
+.badgeDisponibilidad-vendedor {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 5px 12px;
+    border-radius: 5rem;
+    font-size: 0.65rem;
+    font-weight: 800;
+    z-index: 1000;
+
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.02);
+}
+
+.disponible {
+    color: #4ade80;
+    border-color: #4ade80;
+    box-shadow: 0 0 8px rgba(74, 222, 128, 0.3);
+}
+
+.encargar {
+    color: #facc15;
+    border-color: #facc15;
+    box-shadow: 0 0 8px rgba(250, 204, 21, 0.3);
+}
+
+.agotado {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+    border-color: #ef4444;
 }
 
 .card-img {

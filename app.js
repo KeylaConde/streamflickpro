@@ -43,19 +43,13 @@ async function getServicios() {
 function generarLinkWhatsapp(item) {
     const costoVendedor = Number(item['Costo Vendedor']).toLocaleString();
 
-    const e1 = '\u{1F4F1}'; // 📱
-    const e2 = '\u{2705}'; // ✅
-    const e3 = '\u{1F4B5}'; // 💵
-    const e4 = '\u{26A0}'; // ⚠
-    const e5 = '\u{1F44D}'; // 👍
-
     const msg = 
     ' *Nuevo Pedido - Streamflick PRO*\n\n' +
     ' Hola. Solicito la siguiente activación:\n\n' +
     ' *Servicio:* ' + item['Servicio'] + '\n' +
     ' *Costo:* $' + costoVendedor + '\n\n' +
     ' Por favor, confírmame si tienes disponibilidad para proceder a cancelar el valor.\n' +
-    ' Quedo pendiente.';
+    ' Quedo pendiente.'; 
 
     return 'https://wa.me/' + whatsapp_number + '?text=' + encodeURIComponent(msg);
 }
@@ -79,10 +73,19 @@ function renderCards(lista) {
         card.className = 'card';
         const waLink = generarLinkWhatsapp(item);
 
+        // Lógica para el badge de disponibilidad (solo para categoría Individual)
+        let badgeDisponibilidadVendedor = '';
+
+        if (item['Categoría'] === 'Individual' && item['Disponibilidad_servicio']) {
+            let claseEstado = item['Disponibilidad_servicio'].toLowerCase();
+            badgeDisponibilidadVendedor = `<span class="badgeDisponibilidad-vendedor ${claseEstado}">${item['Disponibilidad_servicio'].toUpperCase()}</span>`;
+        }
+
         // Usamos ${colores[item['Categoría']]} para que el navegador busque el color en el objeto de arriba
 
         //Estructura con espacio para miniatura de canva
         card.innerHTML = `<div class="card-img-container">
+        ${badgeDisponibilidadVendedor}
         <img src="${item.Imagen_URL || 'img/placeholder.png'}" alt="${item.Servicio}" class="card-img">
         </div>
 
@@ -123,6 +126,7 @@ function renderCards(lista) {
                         </button>
                     </div>
                 `;
+
                             
                             container.appendChild(card);
 
