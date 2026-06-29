@@ -11,7 +11,7 @@ let serviciosData = [];
 const container = document.getElementById('servicios-container');
 const buscador = document.getElementById('buscador');
 
-// 2. Obtener datos de Supabase
+// Obtener datos de Supabase
 async function getServicios() {
     console.log("Consultando tabla Servicios...")
     try {
@@ -54,7 +54,27 @@ function generarLinkWhatsapp(item) {
     return 'https://wa.me/' + whatsapp_number + '?text=' + encodeURIComponent(msg);
 }
 
-//3. Renderizar las tarjetas en HTML 
+function irAVitrinaPublica() {
+    // Ocultar panel de vendedores
+    const panelVendedores = document.getElementById('main-content');
+    if (panelVendedores) {
+        panelVendedores.style.display = 'none';
+    }
+
+    // Mostrar sección pública
+    const seccionPublica = document.getElementById('seccion-publica');
+    if (seccionPublica) {
+        seccionPublica.style.display = 'block';
+    }
+
+    // Asegurar que el botón esté visible
+    const botonAccesoVendedores = document.querySelector('.btn-acceso-vendedores');
+    if (botonAccesoVendedores) {
+        botonAccesoVendedores.style.display = 'inline-block';
+    }
+}
+
+// Renderizar las tarjetas en HTML sección vendedores 
 function renderCards(lista) {
     container.innerHTML = '';
 
@@ -309,16 +329,9 @@ function renderizarVitrinaPublica(servicios) {
 
 // Función para el botón de whatsapp público
 function comprarPorWhatsapp(nombreServicio, estadoDisponibilidad) {
-    let mensajeCliente = "";
     const numeroWhatsapp = "573158643093";
 
-    if (estadoDisponibilidad === 'Disponible') {
-        mensajeCliente = `Hola, me gustaría adquirir el servicio de "${nombreServicio}". ¿Cómo es el proceso para realizar la compra? ¡Gracias!`;
-    } else if (estadoDisponibilidad === 'Encargar') {
-        mensajeCliente = `Hola, vi que "${nombreServicio}" está por encargo. Me interesa, ¿Cuánto tardaría en estar disponible? ¡Gracias!`;
-    } else {
-        mensajeCliente = `Hola, me interesa "${nombreServicio}", pero veo que no está disponible ahora. ¿Podrías avisarme cuando vuelve a estar activo? ¡Gracias!`;
-    }
+    const mensajeCliente = `Hola, me gustaría adquirir el servicio de "${nombreServicio}". ¿Cómo es el proceso para realizar la compra? ¡Gracias!`;
 
     const linkCliente = `https://wa.me/${numeroWhatsapp}?text=${encodeURIComponent(mensajeCliente)}`;
 

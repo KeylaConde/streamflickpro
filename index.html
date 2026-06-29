@@ -27,15 +27,21 @@
         <div class="header-content">
             <div class="logo-container">
                 <img src="img/logo/Streamflick (2)-compressed.png" alt="Logo Streamflick Pro" class="logo-icon">
-            <div class="logo-text">Streamflick <span class="logo-pro"> PRO</span>
+                <div class="logo-text">Streamflick <span class="logo-pro"> PRO</span>
+                </div>
+                <!--p>Tus plataformas de streaming favoritas en un solo lugar ⚡</p-->
             </div>
+
+            <div class="header-buttons">
+                <button class="btn-ir-publico" onclick="irAVitrinaPublica()">
+                    <i class="fa-solid fa-house"></i> Inicio
+                </button>
+                <button class="btn-acceso-vendedores" onclick="mostrarLogin()">Acceso Distribuidores 🔒</button>
             </div>
-            <p>Tus plataformas de streaming favoritas en un solo lugar ⚡</p>
-            <button class="btn-acceso-vendedores" onclick="mostrarLogin()">Acceso Distribuidores 🔒</button>
         </div>
     </header>
 
-    <section id="seccion-publica">
+    <section id="seccion-publica" class="vitrina-container">
 
         <div class="menu-categorias-publico" style="display: flex; justify-content: center; gap: 10px; margin-bottom: 30px; flex-wrap: wrap;">
             <div class="botones-grupo">
@@ -45,12 +51,12 @@
             <button class="btn-combo" onclick="filtrarVitrinaPublica('Combos Especiales')">Combos Premium</button>
             </div>
 
-        <div class="buscador-publico-container">
+            <div class="buscador-publico-container">
             <form class="search-box-wrapper">
                 <i class="fas fa-search"></i>
                 <input type="text" id="buscador-publico" name="q" placeholder="¿Qué plataforma buscas? (Ej: Netflix, Amazon...)" oninput="buscarServiciosPublicos()" autocomplete="off" spellcheck="false">
             </form>
-        </div>
+            </div>
         </div>
 
         <div id="grid-clientes" class="grid-servicios">
@@ -80,6 +86,7 @@
             <input type="text" id="buscador" placeholder="Qué plataforma buscas? Ej: Disney...">
         </section>
 
+        <!-- Contenido de los distribuidores -->
         <div id="servicios-container" class="grid-servicios">
             <p class="loading">Cargando servicios...</p>
         </div>
