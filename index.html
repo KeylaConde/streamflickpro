@@ -32,13 +32,17 @@
 </head>
 <body>
     <header>
+
         <div class="header-content">
             <div class="logo-container">
                 <img src="img/logo/Streamflick (2)-compressed.png" alt="Logo Streamflick Pro" class="logo-icon">
                 <div class="logo-text">Streamflick <span class="logo-pro"> PRO</span>
                 </div>
                 <!--p>Tus plataformas de streaming favoritas en un solo lugar ⚡</p-->
-            </div>
+            </div>            
+        </div>
+
+        <div class="header-content-right">
 
             <div class="header-buttons">
                 <button class="btn-ir-publico" onclick="irAVitrinaPublica()">
@@ -46,7 +50,14 @@
                 </button>
                 <button class="btn-acceso-vendedores" onclick="mostrarLogin()">Acceso Distribuidores 🔒</button>
             </div>
+
+            <div id="usuario-info" style="display: none;">
+            <span id="nombre-vendedor" ></span>
+            </div>
         </div>
+
+
+                
     </header>
 
     <section id="seccion-publica" class="vitrina-container">

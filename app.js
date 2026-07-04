@@ -4,7 +4,35 @@ const supabase_key = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 const supabaseClient = supabase.createClient(supabase_url, supabase_key);
 const whatsapp_number = "573158643093"; 
 
-console.log("¡Archivo cargado y listo!");
+async function mostrarNombreUsuario() {
+    
+// LIMPIEZA INMEDIATA: Ocultamos y vaciamos el texto antes de hacer cualquier consulta a la base de datos
+    const contenedorUsuario = document.getElementById('usuario-info');
+    const spanNombre = document.getElementById('nombre-vendedor');
+
+    // Obtenemos al usuario que está logueado en este momento
+    const { data: { user } } = await supabaseClient.auth.getUser();
+
+    //Si no hay usuario, ocultamos inmediatamente el contenedor
+
+    if (!user) return; // Si no hay usuario, terminamos aquí (ya está oculto)    
+    
+        // Buscamos en la tabla 'Perfiles' el nombre que coincide con su ID
+        const { data, error } = await supabaseClient
+            .from('Perfiles')
+            .select('Nombre')
+            .eq('id', user.id)
+            .single(); // Aquí está la magia de la vinculación
+
+            console.log("Datos del perfil:", data);
+            console.log("Error de BD:", error);
+
+            if (data && spanNombre && contenedorUsuario) {
+                contenedorUsuario.classList.add('activo'); // Mostramos el contenedor
+                spanNombre.innerText = `Hola, ${data.Nombre}`;
+            } 
+    }
+
 
 //Variables de estado
 let serviciosData = [];
@@ -370,6 +398,8 @@ if (data && data.length > 0) {
 
 // LLamamos a la función cada 10 segundos para que sea dinámico
 setInterval(mostrarVentaReciente, 10000); 
+
+mostrarNombreUsuario(); // Llamamos a la función para mostrar el nombre al cargar la página
 
 // Iniciar carga
 getServicios();
