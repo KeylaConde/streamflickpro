@@ -781,6 +781,15 @@ h1 span {
 }
 
 @media (min-width: 1025px) {
+    body {
+        max-width: 120rem;
+        margin: auto;
+    }
+
+    .header-buttons {
+        margin-right: 5rem;
+    }
+
     .seccion-publica {
         width: 100%;
     }
@@ -816,6 +825,10 @@ h1 span {
 
 /* Tablets y dispositivos medianos */
 @media (min-width: 769px) and (max-width: 1024px) {
+    body {
+        max-width: 90rem;
+    }
+
     header {
         flex-direction: column;
         align-items: center;
@@ -836,7 +849,7 @@ h1 span {
     }
 
     .header-content-right {
-        width: 100%;
+        width: 90%;
         display: flex;
         justify-content: center;
         align-items: center;
